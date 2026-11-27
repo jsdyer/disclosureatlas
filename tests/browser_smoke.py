@@ -61,6 +61,15 @@ def main():
                 assert "CAD $10.5 million" in page.locator("#findings").inner_text()
                 page.set_viewport_size({"width":320,"height":740})
                 assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
+                # Some Linux fallbacks are wider than the default browser font.
+                # Allow space for every footer link on a 320px phone, including
+                # when the reader has chosen slightly larger text.
+                wide_font = page.add_style_tag(content="html{font-size:18px}body{font-family:'DejaVu Sans',sans-serif}")
+                assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
+                for link in page.locator("footer nav a").all():
+                    box = link.bounding_box()
+                    assert box["x"] >= 0 and box["x"] + box["width"] <= 320
+                wide_font.evaluate("style => style.remove()")
                 assert not errors, errors
                 nojs = browser.new_context(java_script_enabled=False)
                 native = nojs.new_page()
