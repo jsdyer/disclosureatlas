@@ -36,6 +36,6 @@ python tests/browser_smoke.py
 python -m http.server 8010 --directory dist
 ```
 
-An existing system Chromium can be supplied through `CHROMIUM_PATH`. The default build reads only the retained edition and emits the root, casefile directory, source index, individual canonical HTML pages, native sitemap and JSON download in `dist/`. No build dependencies are needed. The source repository uses the name disclosureatlas-. The CoolCode hub serves its reviewed build at the clean disclosureatlas path. Native CI checks pull requests and main pushes and keeps the resulting site artifact. The Pages deployment job also supports a future matching repository name and skips publication at the suffixed GitHub Pages path.
+An existing system Chromium can be supplied through `CHROMIUM_PATH`. The default build reads only the retained edition and emits the root, casefile directory, source index, individual canonical HTML pages, native sitemap and JSON download in `dist/`. No build dependencies are needed. The native GitHub workflow checks pull requests and pushes to main. A successful main build publishes the site to GitHub Pages at https://coolcode.ca/disclosureatlas/. The source is available at https://github.com/jsdyer/disclosureatlas.
 
 [Download the curated edition](https://coolcode.ca/disclosureatlas/data/edition.json) · [Native sitemap](https://coolcode.ca/disclosureatlas/sitemap.xml)
