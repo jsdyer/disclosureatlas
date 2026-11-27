@@ -1,0 +1,447 @@
+{
+  "reviewed": "2026-11-27",
+  "title": "Disclosure Atlas casefiles",
+  "featured": {
+    "case": "arar-inquiry",
+    "summary": "In 2006 an inquiry issued 23 recommendations. Four months later, Canada apologized to Maher Arar.",
+    "action": "Follow the Arar inquiry"
+  },
+  "cases": [
+    {
+      "slug": "arar-inquiry",
+      "title": "The Arar inquiry",
+      "question": "What led Canada to apologize to Maher Arar?",
+      "region": "Canada",
+      "kind": "Public inquiry",
+      "period": "2002–2007",
+      "summary": "An inquiry traced how Canadian agencies handled information about Maher Arar. Four months after its findings appeared, the federal government apologized and announced a settlement.",
+      "sources": [
+        {
+          "id": "report",
+          "title": "Report of the events relating to Maher Arar",
+          "publisher": "Commission of Inquiry into the Actions of Canadian Officials in Relation to Maher Arar",
+          "date": "2006",
+          "url": "https://publications.gc.ca/site/eng/9.688875/publication.html"
+        },
+        {
+          "id": "findings",
+          "title": "Commissioner O’Connor’s findings",
+          "publisher": "Arar Commission",
+          "date": "18 September 2006",
+          "url": "https://www.canada.ca/en/news/archive/2006/09/arar-commission-releases-findings-handling-maher-arar-case.html"
+        },
+        {
+          "id": "apology",
+          "title": "Letter of apology and announcement of settlement",
+          "publisher": "Prime Minister of Canada",
+          "date": "26 January 2007",
+          "url": "https://www.canada.ca/en/news/archive/2007/01/prime-minister-releases-letter-apology-maher-arar-his-family-announces-completion-mediation-process.html"
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2002",
+          "title": "Detention and removal",
+          "text": "US authorities detained Arar in New York and sent him to Syria via Jordan. He returned to Canada in 2003.",
+          "source": "report"
+        },
+        {
+          "date": "18 September 2006",
+          "title": "The inquiry reports",
+          "text": "Commissioner Dennis O’Connor published findings on Canadian officials’ conduct and made 23 recommendations.",
+          "source": "findings"
+        },
+        {
+          "date": "26 January 2007",
+          "title": "Canada apologizes",
+          "text": "The prime minister issued a written apology to Arar and his family and announced the conclusion of mediation.",
+          "source": "apology"
+        }
+      ],
+      "finding": {
+        "text": "O’Connor found no evidence that Arar had committed an offence or posed a threat to Canadian security. He considered it very likely that US authorities relied on information the RCMP supplied.",
+        "source": "findings"
+      },
+      "outcome": {
+        "text": "Canada accepted all 23 recommendations. It announced a settlement of CAD $10.5 million plus legal costs.",
+        "source": "apology"
+      },
+      "limits": {
+        "text": "US authorities did not participate in the inquiry. The commissioner could not determine exactly how they made the removal decision.",
+        "source": "findings"
+      },
+      "related": [
+        "canada-nato-interviews",
+        "pentagon-papers"
+      ],
+      "connection": null
+    },
+    {
+      "slug": "canada-nato-interviews",
+      "title": "Canada’s NATO oral histories",
+      "question": "What does a declassified interview add to a signed treaty?",
+      "region": "Canada",
+      "kind": "Access release",
+      "period": "1949–1991",
+      "summary": "Compare what Canada signed in 1949 with a diplomat’s later account of the negotiations. The Canada Declassified exhibit brings the original interviews into public view.",
+      "sources": [
+        {
+          "id": "treaty",
+          "title": "The North Atlantic Treaty",
+          "publisher": "NATO",
+          "date": "4 April 1949",
+          "url": "https://www.nato.int/en/about-us/official-texts-and-resources/official-texts/1949/04/04/the-north-atlantic-treaty"
+        },
+        {
+          "id": "exhibit",
+          "title": "In Alliance oral history exhibit",
+          "publisher": "Canada Declassified, University of Toronto",
+          "date": "Exhibit date unspecified",
+          "url": "https://declassified.library.utoronto.ca/exhibits/show/-in-alliance---an-oral-history"
+        },
+        {
+          "id": "reid",
+          "title": "Interview with Escott Reid",
+          "publisher": "Canada Declassified, University of Toronto",
+          "date": "Interview recorded in 1987",
+          "url": "https://declassified.library.utoronto.ca/exhibits/show/-in-alliance---an-oral-history/part-one--world-order--atlanti/escott-reid"
+        },
+        {
+          "id": "book",
+          "title": "In Alliance, digitized volume",
+          "publisher": "Global Affairs Canada Digital Library",
+          "date": "1991 volume",
+          "url": "https://gac.canadiana.ca/view/ooe.b2735490/1"
+        }
+      ],
+      "timeline": [
+        {
+          "date": "4 April 1949",
+          "title": "The treaty is signed",
+          "text": "Canada and the other founding parties signed the North Atlantic Treaty in Washington. Article 2 includes international economic cooperation.",
+          "source": "treaty"
+        },
+        {
+          "date": "Summer 1987",
+          "title": "Participants record their memories",
+          "text": "Roger Hill recorded interviews with Canadian diplomats, officials and military officers. Escott Reid recounted Canada’s part in the early alliance.",
+          "source": "exhibit"
+        },
+        {
+          "date": "1991",
+          "title": "The interviews are compiled",
+          "text": "The Global Affairs Canada library holds a digitized edition of the resulting oral history volume.",
+          "source": "book"
+        }
+      ],
+      "finding": {
+        "text": "Read Reid’s interview alongside Article 2. The transcript preserves his account of the negotiations, while the signed text records the wording the parties adopted.",
+        "source": "reid"
+      },
+      "outcome": {
+        "text": "The university exhibit says the interviews were declassified under Canada’s Access to Information Act. It organizes thirteen interviews for public reading.",
+        "source": "exhibit"
+      },
+      "limits": {
+        "text": "The exhibit gives the recording period but does not specify the declassification date. A retrospective account also leaves other participants’ recollections open.",
+        "source": "exhibit"
+      },
+      "related": [
+        "arar-inquiry",
+        "pentagon-papers"
+      ],
+      "connection": {
+        "title": "Find federal access-request summaries",
+        "url": "https://coolcode.ca/atip/",
+        "text": "Search completed Canadian access requests for leads to other federal records."
+      }
+    },
+    {
+      "slug": "tobacco-documents",
+      "title": "The Brown & Williamson documents",
+      "question": "How did an unsolicited box of papers become a public research archive?",
+      "region": "United States",
+      "kind": "Industry documents",
+      "period": "1994–1998",
+      "summary": "A tobacco company challenged public access to its internal documents at the University of California. The university’s collection and a later industry settlement preserve two distinct routes to disclosure.",
+      "sources": [
+        {
+          "id": "collection",
+          "title": "UCSF Brown & Williamson Collection",
+          "publisher": "UCSF Industry Documents Library",
+          "date": "Historical collection guide",
+          "url": "https://www.industrydocuments.ucsf.edu/tobacco/collections/ucsf-brown-williamson-collection/"
+        },
+        {
+          "id": "history",
+          "title": "History of the Industry Documents Library",
+          "publisher": "UCSF Industry Documents Library",
+          "date": "Dated archive chronology",
+          "url": "https://www.industrydocuments.ucsf.edu/about-idl/idl-history/"
+        },
+        {
+          "id": "memo",
+          "title": "Smoking and Health Proposal, original memorandum",
+          "publisher": "Brown & Williamson records via UCSF",
+          "date": "Archival document",
+          "url": "https://download.industrydocuments.ucsf.edu/p/s/d/w/psdw0147/psdw0147.pdf"
+        },
+        {
+          "id": "msa",
+          "title": "The Master Settlement Agreement, twenty years later",
+          "publisher": "National Association of Attorneys General",
+          "date": "2018 retrospective",
+          "url": "https://www.naag.org/attorney-general-journal/tobacco-master-settlement-agreement-msa-20-years-later/"
+        }
+      ],
+      "timeline": [
+        {
+          "date": "1994",
+          "title": "A box reaches UCSF",
+          "text": "An anonymous source sent internal Brown & Williamson documents to a UCSF professor. Copies went to the university’s Tobacco Control Archives.",
+          "source": "history"
+        },
+        {
+          "date": "1995",
+          "title": "The library faces a lawsuit",
+          "text": "Brown & Williamson sought removal of the papers. The court allowed public access at the library.",
+          "source": "collection"
+        },
+        {
+          "date": "23 November 1998",
+          "title": "A separate settlement is reached",
+          "text": "Forty-six states, the District of Columbia and five US territories reached the Master Settlement Agreement with four major tobacco manufacturers.",
+          "source": "msa"
+        }
+      ],
+      "finding": {
+        "text": "In a related original memorandum, the company proposed making doubt about smoking and health central to its public communications. The document records a proposed strategy.",
+        "source": "memo"
+      },
+      "outcome": {
+        "text": "Researchers gained access to the disputed collection. UCSF’s guide describes the legal challenge and offers a route to the documents themselves.",
+        "source": "collection"
+      },
+      "limits": {
+        "text": "A proposal alone cannot establish which recommendations the company implemented. The 1998 settlement concerned separate litigation.",
+        "source": "msa"
+      },
+      "related": [
+        "pentagon-papers",
+        "wikileaks-plea"
+      ],
+      "connection": null
+    },
+    {
+      "slug": "panama-papers",
+      "title": "The Panama Papers",
+      "question": "How did a cross-border publication reach the European Parliament?",
+      "region": "International",
+      "kind": "Investigative reporting",
+      "period": "2016–2017",
+      "summary": "Investigative reporting, a public company database and a parliamentary inquiry produced different kinds of evidence. Follow the dates from the first stories to Parliament’s recommendations.",
+      "sources": [
+        {
+          "id": "investigation",
+          "title": "Panama Papers investigation and frequently asked questions",
+          "publisher": "International Consortium of Investigative Journalists",
+          "date": "Investigation launched in 2016",
+          "url": "https://www.icij.org/investigations/panama-papers/faqs/"
+        },
+        {
+          "id": "release",
+          "title": "Release of searchable offshore company data",
+          "publisher": "International Consortium of Investigative Journalists",
+          "date": "9 May 2016",
+          "url": "https://www.icij.org/inside-icij/2016/05/icij-releases-panama-papers-offshore-company-data/"
+        },
+        {
+          "id": "recommendation",
+          "title": "Recommendation following the inquiry into money laundering, tax avoidance and tax evasion",
+          "publisher": "European Parliament via EUR-Lex",
+          "date": "13 December 2017",
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=oj%3AJOC_2018_369_R_0017"
+        },
+        {
+          "id": "scope",
+          "title": "About the Offshore Leaks Database",
+          "publisher": "International Consortium of Investigative Journalists",
+          "date": "Database scope and terms",
+          "url": "https://offshoreleaks.icij.org/pages/faq"
+        }
+      ],
+      "timeline": [
+        {
+          "date": "3 April 2016",
+          "title": "The first stories appear",
+          "text": "ICIJ and its partners published their first coordinated reports based on records from the law firm Mossack Fonseca.",
+          "source": "investigation"
+        },
+        {
+          "date": "9 May 2016",
+          "title": "A public subset becomes searchable",
+          "text": "ICIJ opened company data covering nearly 214,000 offshore entities across 21 jurisdictions.",
+          "source": "release"
+        },
+        {
+          "date": "13 December 2017",
+          "title": "Parliament adopts recommendations",
+          "text": "After its inquiry, the European Parliament issued recommendations to the Council and Commission, including stronger supervision and cooperation.",
+          "source": "recommendation"
+        }
+      ],
+      "finding": {
+        "text": "ICIJ released structured information about offshore entities and their connections. The public database contains a selection from the underlying reporting material.",
+        "source": "release"
+      },
+      "outcome": {
+        "text": "The published parliamentary recommendation records what Parliament called for. Its conclusions concern the application of EU law and weaknesses in oversight.",
+        "source": "recommendation"
+      },
+      "limits": {
+        "text": "An offshore entity may have legitimate uses. A listing alone cannot establish misconduct or tax liability, and the public database omits many underlying records.",
+        "source": "scope"
+      },
+      "related": [
+        "tobacco-documents",
+        "arar-inquiry"
+      ],
+      "connection": {
+        "title": "Explore the Offshore Records Atlas",
+        "url": "https://coolcode.ca/offshorerecords/",
+        "text": "Compare how places appear in five ICIJ investigations and follow the roles documented in individual records."
+      }
+    },
+    {
+      "slug": "pentagon-papers",
+      "title": "The Pentagon Papers",
+      "question": "What changed between the newspaper case and full public release?",
+      "region": "United States",
+      "kind": "Court record",
+      "period": "1967–2011",
+      "summary": "A Supreme Court ruling allowed newspaper publication to continue in 1971. Forty years later the US National Archives released the complete government study.",
+      "sources": [
+        {
+          "id": "archive",
+          "title": "The Pentagon Papers, official study and volumes",
+          "publisher": "US National Archives",
+          "date": "Complete release in 2011",
+          "url": "https://www.archives.gov/research/pentagon-papers"
+        },
+        {
+          "id": "ruling",
+          "title": "New York Times Co. v. United States, 403 U.S. 713",
+          "publisher": "Supreme Court of the United States via the Library of Congress",
+          "date": "30 June 1971",
+          "url": "https://tile.loc.gov/storage-services/service/ll/usrep/usrep403/usrep403713/usrep403713.pdf"
+        },
+        {
+          "id": "release",
+          "title": "Announcement of complete Pentagon Papers release",
+          "publisher": "US National Archives",
+          "date": "2011 release announcement",
+          "url": "https://www.archives.gov/press/press-releases/2011-225"
+        }
+      ],
+      "timeline": [
+        {
+          "date": "1967",
+          "title": "The study is commissioned",
+          "text": "Defense Secretary Robert McNamara commissioned a study of US involvement in Vietnam.",
+          "source": "archive"
+        },
+        {
+          "date": "30 June 1971",
+          "title": "The Supreme Court rules",
+          "text": "The government sought orders preventing the New York Times and Washington Post from printing material from the study. The Court ruled against the government.",
+          "source": "ruling"
+        },
+        {
+          "date": "13 June 2011",
+          "title": "The complete study is released",
+          "text": "The National Archives made the report and its supporting documents available in full. Compared with the earlier Gravel edition, the Archives counted about 2,384 pages newly opened to the public.",
+          "source": "release"
+        }
+      ],
+      "finding": {
+        "text": "The Court held that the government had failed to meet the burden required to justify prior restraint in these cases. The separate opinions give the justices’ different reasons.",
+        "source": "ruling"
+      },
+      "outcome": {
+        "text": "Readers can open individual volumes of the approximately 7,000-page official release and compare the material with the narrower publication dispute.",
+        "source": "archive"
+      },
+      "limits": {
+        "text": "The 1971 decision concerns the requested orders against two newspapers. It does not resolve every legal question about obtaining or publishing classified information.",
+        "source": "ruling"
+      },
+      "related": [
+        "wikileaks-plea",
+        "canada-nato-interviews"
+      ],
+      "connection": null
+    },
+    {
+      "slug": "wikileaks-plea",
+      "title": "WikiLeaks and the Assange plea",
+      "question": "What did the 2024 guilty plea actually decide?",
+      "region": "United States",
+      "kind": "Court record",
+      "period": "2010–2024",
+      "summary": "The public record distinguishes WikiLeaks’ wartime publications from the specific offence Julian Assange admitted in federal court in Saipan.",
+      "sources": [
+        {
+          "id": "agreement",
+          "title": "United States v. Julian Assange, plea agreement",
+          "publisher": "US District Court for the Northern Mariana Islands via the US Department of Justice",
+          "date": "June 2024",
+          "url": "https://www.justice.gov/opa/media/1358636/dl?inline="
+        },
+        {
+          "id": "outcome",
+          "title": "Announcement of guilty plea and sentence",
+          "publisher": "US Department of Justice",
+          "date": "25 June 2024, US release date",
+          "url": "https://www.justice.gov/archives/opa/pr/wikileaks-founder-pleads-guilty-and-sentenced-conspiring-obtain-and-disclose-classified"
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2010 and 2011",
+          "title": "Wartime documents are published",
+          "text": "WikiLeaks published material concerning Iraq and Afghanistan and US diplomatic communications. These publications form part of the historical background described by the Department of Justice.",
+          "source": "outcome"
+        },
+        {
+          "date": "June 2024",
+          "title": "The parties reach a plea agreement",
+          "text": "The written agreement sets out a single conspiracy count and the parties’ agreed position on sentence.",
+          "source": "agreement"
+        },
+        {
+          "date": "26 June 2024 in Saipan",
+          "title": "The court imposes sentence",
+          "text": "Assange pleaded guilty in the Northern Mariana Islands. The court sentenced him to time served, reflecting 62 months spent in custody in the United Kingdom.",
+          "source": "outcome"
+        }
+      ],
+      "finding": {
+        "text": "The plea concerned conspiracy to obtain and disclose national defense information. The signed agreement identifies the offence and distinguishes the parties’ commitments from the court’s sentencing decision.",
+        "source": "agreement"
+      },
+      "outcome": {
+        "text": "The court imposed a sentence of time served. The Department of Justice announced the result on 25 June on the US mainland, when it was already 26 June in Saipan.",
+        "source": "outcome"
+      },
+      "limits": {
+        "text": "A plea resolves the identified charge against one defendant. It supplies no judicial finding about the accuracy of every published document or the legality of other publishers’ work.",
+        "source": "agreement"
+      },
+      "related": [
+        "pentagon-papers",
+        "tobacco-documents"
+      ],
+      "connection": null
+    }
+  ]
+}

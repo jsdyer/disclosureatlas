@@ -1,16 +1,32 @@
 {
-  "id": "coolcode-tool-template",
-  "title": "CoolCode Tool Starter",
-  "description": "A browser-only example that trims lines and removes exact duplicates.",
-  "category": "security",
-  "tags": ["text", "lines", "duplicates"],
-  "icon": "scan-search",
-  "url": "/coolcode-tool-template/",
-  "source": "https://github.com/jsdyer/coolcode-tool-template",
+  "id": "disclosureatlas",
+  "title": "Disclosure Atlas",
+  "description": "Trace public disclosures through original documents, published findings and official outcomes.",
+  "category": "explorers",
+  "tags": [
+    "public inquiries",
+    "declassification",
+    "press freedom",
+    "access to information",
+    "archives",
+    "public records"
+  ],
+  "icon": "files",
+  "url": "/disclosureatlas/",
+  "source": "https://github.com/jsdyer/disclosureatlas-",
   "hosting": "project",
   "access": "browser",
   "data_info": {
-    "mode": "local",
-    "detail": "The browser reads the text you paste and compares its lines."
+    "mode": "reference",
+    "detail": "Casefiles cite inquiry reports, archival originals, court decisions and published outcomes. Each edition displays its editorial review date."
+  },
+  "result_directory": {
+    "title": "Disclosure casefiles and source documents",
+    "path": "records/"
+  },
+  "dataset": {
+    "title": "Public disclosure casefiles, timelines and source citations",
+    "format": "JSON",
+    "file": "data/edition.json"
   }
 }

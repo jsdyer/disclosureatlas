@@ -2,8 +2,7 @@
 
 - Keep app source in `web/`, build code in `scripts/`, and meaningful tests in `tests/`.
   Never commit `dist/`. Do not add dependencies without a concrete application need.
-- Run `scripts/init.py` as documented in README, then replace the example UI,
-  behaviour, tests and privacy text. Review all fields in `tool.json`.
+- Review all fields in `tool.json` when the application or its published location changes.
 - Build for expandable personal use: keep watchlists, preset queries, source
   selections and tunable limits in a documented configuration file. Defaults are
   starting points; accept arbitrary valid visitor input when the source permits it.
@@ -49,7 +48,7 @@
   deployment receipt, watchdog targets/probes/App permissions, guard and sitemap.
   Do not report a release complete with these integrations left implicit.
 
-- Give the page a concise task-based search title using `init.py --search-title`; keep
+- Give the page a concise task-based search title and keep
   the application name on the page. Retain the build-time search metadata helper,
   choose an accurate app category, and derive any Dataset metadata from real inputs.
   Never substitute a build timestamp for a source edition or fabricate ratings.

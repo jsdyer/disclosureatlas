@@ -1,113 +1,114 @@
+import copy
+from html.parser import HTMLParser
 import json
 from pathlib import Path
-import re
 import shutil
 import sys
 import tempfile
 import unittest
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
-from build import ROOT, build, metadata
+from urllib.parse import unquote, urljoin, urlsplit
+from xml.etree import ElementTree as ET
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT / "scripts"))
+from build import build, validate
 
 
-class BuildTests(unittest.TestCase):
-    def setUp(self):
-        self.temporary = tempfile.TemporaryDirectory()
-        self.addCleanup(self.temporary.cleanup)
-        self.root = Path(self.temporary.name)
-        shutil.copytree(ROOT / "web", self.root / "web")
-        shutil.copyfile(ROOT / "tool.json", self.root / "tool.json")
-        shutil.copyfile(ROOT / "README.md", self.root / "README.md")
-
-    def edit(self, **changes):
-        tool = json.loads((self.root / "tool.json").read_text())
-        tool.update(changes)
-        (self.root / "tool.json").write_text(json.dumps(tool))
-
-    def test_build_is_scoped_to_web_and_escapes_metadata(self):
-        (self.root / "private.txt").write_text("must not publish")
-        self.edit(title='<img src=x onerror="bad()">')
-        build(self.root)
-        page = (self.root / "dist/index.html").read_text()
-        self.assertIn('&lt;img', page)
-        self.assertNotIn('<img', page)
-        self.assertNotIn('{{', page)
-        self.assertIn('href="./style.css"', page)
-        self.assertFalse((self.root / "dist/private.txt").exists())
-        self.assertTrue((self.root / "dist/.nojekyll").exists())
-
-    def test_reporting_is_scoped_to_initialized_coolcode_tools(self):
-        for owner, slug, enabled in [
-            ("jsdyer", "coolcode-tool-template", False),
-            ("another-owner", "my-tool", False),
-            ("jsdyer", "my-tool", True),
-        ]:
-            with self.subTest(owner=owner, slug=slug):
-                self.edit(id=slug, url=f"/{slug}/", source=f"https://github.com/{owner}/{slug}")
-                build(self.root)
-                page = (self.root / "dist/index.html").read_text()
-                self.assertEqual('/assets/tool-metrics.js' in page, enabled)
-                self.assertEqual(f'https://coolcode.ca/report/?tool={slug}' in page, enabled)
-                self.assertNotIn("{{", page)
-
-    def test_common_pages_are_opt_in_and_preserve_root_search_title_and_stats(self):
-        self.edit(id="example", url="/example/", source="https://github.com/jsdyer/example")
-        build(self.root)
-        route = self.root / "dist/remove-duplicate-cities/index.html"
-        self.assertFalse(route.exists())
-        entry = self.root / "web/index.html"
-        entry.write_text(re.sub(r"<title>.*?</title>", "<title>Custom search title · CoolCode</title>",
-                                entry.read_text(), count=1, flags=re.S))
-        shutil.copytree(ROOT / "examples/common-pages", self.root / "common-pages")
-        build(self.root)
-        root = (self.root / "dist/index.html").read_text()
-        self.assertIn("<title>Custom search title · CoolCode</title>", root)
-        self.assertIn('href="./remove-duplicate-cities/"', root)
-        self.assertIn('rel="canonical" href="https://coolcode.ca/example/"', root)
-        page = route.read_text()
-        self.assertIn("<title>Remove duplicate cities from a list · CoolCode</title>", page)
-        self.assertIn('rel="canonical" href="https://coolcode.ca/example/remove-duplicate-cities/"', page)
-        self.assertIn('src="../app.mjs"', page)
-        self.assertIn('data-tool-id="example"', page)
-        self.assertIn('src="/assets/tool-metrics.js"', page)
-        self.assertIn("Vancouver\nHalifax\nCharlottetown</textarea>", page)
-
-    def test_rejects_invalid_common_page_paths_and_collisions(self):
-        directory = self.root / "common-pages"
-        directory.mkdir()
-        manifest = directory / "manifest.json"
-        for slug in ("../escape", "/absolute", "a/b", "x?name=1", ""):
-            with self.subTest(slug=slug):
-                manifest.write_text(json.dumps([{"slug": slug, "title": "T", "description": "D"}]))
-                with self.assertRaises(ValueError):
-                    build(self.root)
-        manifest.write_text('[{"slug":"data","title":"Data","description":"Some data"}]')
-        (self.root / "web/data").mkdir()
-        with self.assertRaisesRegex(ValueError, "collides"):
-            build(self.root)
-
-    def test_url_matches_tool_id(self):
-        self.edit(url="/different/")
-        with self.assertRaises(ValueError): metadata(self.root)
-
-    def test_requires_a_source_sentence_and_a_guide_note(self):
-        (self.root / "README.md").write_text("# A tool")
-        with self.assertRaisesRegex(ValueError, "README note"):
-            metadata(self.root)
-        self.edit(data_info={"mode": "local", "detail": ""})
-        with self.assertRaisesRegex(ValueError, "homepage card"):
-            metadata(self.root)
-
-    def test_browser_access_is_explicit(self):
-        self.edit(access="install")
-        with self.assertRaisesRegex(ValueError, "immediately usable"):
-            metadata(self.root)
-
-    def test_failed_build_keeps_existing_output(self):
-        build(self.root)
-        existing = (self.root / "dist/index.html").read_bytes()
-        self.edit(source="javascript:bad()")
-        with self.assertRaises(ValueError): build(self.root)
-        self.assertEqual((self.root / "dist/index.html").read_bytes(), existing)
+class Page(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.ids = set()
+        self.links = []
+        self.canonical = []
+        self.description = []
+    def handle_starttag(self, tag, attrs):
+        a = dict(attrs)
+        if 'id' in a:
+            self.ids.add(a['id'])
+        if tag == "a":
+            self.links.append(a["href"])
+        if tag == "link" and a.get("rel") == "canonical":
+            self.canonical.append(a["href"])
+        if tag == "meta" and a.get("name") == "description":
+            self.description.append(a["content"])
 
 
-if __name__ == "__main__": unittest.main()
+class EditionTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.temp = tempfile.TemporaryDirectory()
+        cls.root = Path(cls.temp.name)
+        for directory in ("web", "data"):
+            shutil.copytree(ROOT / directory, cls.root / directory)
+        shutil.copyfile(ROOT / "tool.json", cls.root / "tool.json")
+        cls.edition = json.loads((cls.root / "data/edition.json").read_text())
+        build(cls.root)
+        cls.site = cls.root / "dist"
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.temp.cleanup()
+
+    def test_canonicals_descriptions_source_links_and_sitemap(self):
+        base = "https://coolcode.ca/disclosureatlas/"
+        sitemap = ET.parse(self.site / "sitemap.xml")
+        locs = {element.text for element in sitemap.findall(".//{*}loc")}
+        pages = {}
+        for file in self.site.rglob("index.html"):
+            path = str(file.relative_to(self.site)).removesuffix("index.html")
+            page = Page()
+            page.feed(file.read_text())
+            url = base + path
+            self.assertEqual(page.canonical, [url])
+            self.assertEqual(len(page.description), 1)
+            self.assertGreater(len(page.description[0]), 35)
+            pages[url] = page
+        self.assertEqual(locs, set(pages) - {base})
+        self.assertIn(base+"records/", locs)
+        self.assertEqual(len(locs), len(self.edition['cases']) + 2)
+        for url, page in pages.items():
+            for href in page.links:
+                full = urljoin(url, href)
+                parts = urlsplit(full)
+                if not full.startswith(base):
+                    continue
+                address = full.split('#')[0]
+                if address.endswith('/'):
+                    self.assertIn(address, pages)
+                    if parts.fragment:
+                        self.assertIn(unquote(parts.fragment), pages[address].ids)
+                else:
+                    self.assertTrue((self.site / address.removeprefix(base)).is_file())
+        for case in self.edition["cases"]:
+            source_urls = {s["url"] for s in case["sources"]}
+            url = base + "records/" + case["slug"] + "/"
+            self.assertTrue(source_urls <= set(pages[url].links))
+            self.assertTrue(source_urls <= set(pages[base+"records/sources/"].links))
+        self.assertEqual(self.edition, json.loads((self.site / "data/edition.json").read_text()))
+
+    def test_invalid_references_and_slug_are_rejected(self):
+        for key, value in [("slug","../escape"), ("related",["missing"])]:
+            data = copy.deepcopy(self.edition)
+            data["cases"][0][key] = value
+            with self.assertRaises(ValueError):
+                validate(data)
+        data = copy.deepcopy(self.edition)
+        data["cases"][0]["outcome"]["source"] = "missing"
+        with self.assertRaises(ValueError):
+            validate(data)
+
+    def test_expansion_is_discovered_without_new_routes_in_code(self):
+        data = copy.deepcopy(self.edition)
+        extra = copy.deepcopy(data['cases'][0])
+        extra.update(slug="added-on-review", title="A newly reviewed record", region="Added region")
+        data["cases"].append(extra)
+        validate(data)
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            shutil.copytree(self.root / "web", root / "web")
+            (root / "data").mkdir()
+            (root / "data/edition.json").write_text(json.dumps(data))
+            shutil.copyfile(self.root / "tool.json", root / "tool.json")
+            build(root)
+            self.assertTrue((root / "dist/records/added-on-review/index.html").exists())
+            self.assertIn("<option>Added region</option>", (root / "dist/index.html").read_text())
